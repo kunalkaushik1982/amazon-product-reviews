@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Amazon</title>
+    </head>
+    <body>
+        <h1>Amazon Product Review</h1>
+        
+        <form action="/predict" method="POST">
+            <label>Write text:</label><br>
+            <textarea name="text" rows="10" cols="40">{{ text or '' }}</textarea><br>
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if result is not none %}
+            <h2>Prediction: {{ result }}</h2>  <!-- Displays either 'Sad' or 'Happy' -->
+            <p>Submitted Text: {{ text }}</p>  <!-- Displays the text inputted by the user -->
+        {% endif %}
+
+        <hr>
+
+        <h2>Review History</h2>
+        {% if history %}
+            <ul>
+            {% for entry in history %}
+                <li><strong>Review:</strong> {{ entry.text }} <br><strong>Reaction:</strong> {{ entry.reaction }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No reviews yet.</p>
+        {% endif %}
+
+    </body>
+</html>
