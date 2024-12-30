@@ -1,4 +1,4 @@
 [core]
     remote = myremote
 ['remote "myremote"']
-    url = C:\Users\work\AppData\Local\Temp
+    url = s3://amazon-product-review
